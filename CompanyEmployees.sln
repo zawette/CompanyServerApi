@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyEmployees", "CompanyEmployees\CompanyEmployees.csproj", "{CA31ED07-7635-4618-A0C2-B5B53DBD36AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployees", "CompanyEmployees\CompanyEmployees.csproj", "{CA31ED07-7635-4618-A0C2-B5B53DBD36AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{EB47C5B3-63BB-4A1D-AB70-63EB1437ECE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{EB47C5B3-63BB-4A1D-AB70-63EB1437ECE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{7247F07A-E4C6-44F0-B236-AECF6BB92C13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{7247F07A-E4C6-44F0-B236-AECF6BB92C13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{05D2928C-EE6F-443B-B832-299B9540424A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{05D2928C-EE6F-443B-B832-299B9540424A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{3DF8A5B7-7CDE-49FE-8F06-6231A3756348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{05D2928C-EE6F-443B-B832-299B9540424A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D2928C-EE6F-443B-B832-299B9540424A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D2928C-EE6F-443B-B832-299B9540424A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF8A5B7-7CDE-49FE-8F06-6231A3756348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF8A5B7-7CDE-49FE-8F06-6231A3756348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF8A5B7-7CDE-49FE-8F06-6231A3756348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF8A5B7-7CDE-49FE-8F06-6231A3756348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
