@@ -10,6 +10,8 @@ namespace CompanyEmployees.Profiles
         {
             CreateMap<Company, CompanyDto>()
                 .ForMember(cDto => cDto.FullAddress, opt => opt.MapFrom(x => string.Join(x.Address, x.Country)));
+
+            CreateMap<Employee, EmployeeDto>();
         }
     }
 }
