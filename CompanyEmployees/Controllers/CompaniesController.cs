@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.Dtos;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -44,5 +45,20 @@ namespace CompanyEmployees.Controllers
                 return Ok(_mapper.Map<CompanyDto>(company));
             }
         }
+
+        public IActionResult CreateCompany([FromBody] CompanyForCreationDto companyForCreationDto)
+        {
+            if (companyForCreationDto == null)
+            {
+                _logger.LogError("Null companyForCreation object sent from client");
+                return BadRequest();
+            }
+            var company = _mapper.Map<Company>(companyForCreationDto);
+            _repository.Company.CreateCompany(company);
+            _repository.Save();
+            var companyToReturn = _mapper.Map<CompanyDto>(company);
+            return CreatedAtAction(nameof(GetCompany), new { id = companyToReturn.Id }, companyToReturn);
+        }
+
     }
 }
