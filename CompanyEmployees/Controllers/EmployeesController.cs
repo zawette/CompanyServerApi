@@ -60,7 +60,7 @@ namespace CompanyEmployees.Controllers
             return Ok(_mapper.Map<IEnumerable<EmployeeDto>>(employees));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetEmployeeForCompany")]
         public IActionResult GetEmployee(Guid companyId, Guid id)
         {
             var company = _repository.Company.GetCompany(id, trackChanges: false);
