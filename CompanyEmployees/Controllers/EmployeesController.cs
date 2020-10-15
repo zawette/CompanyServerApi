@@ -38,6 +38,12 @@ namespace CompanyEmployees.Controllers
                 _logger.LogInfo($"Company with id: {companyId} doesn't exist in the database.");
                 return NotFound();
             }
+            //if (!ModelState.IsValid)
+            //{
+            //    _logger.LogError("Invalid model state for the patch document");
+            //    return UnprocessableEntity(ModelState);
+            //}
+
             var employeeEntity = _mapper.Map<Employee>(employee);
 
             _repository.Employee.CreateEmployeeForCompany(companyId, employeeEntity);
@@ -64,10 +70,10 @@ namespace CompanyEmployees.Controllers
         [HttpGet("{id}", Name = "GetEmployeeForCompany")]
         public IActionResult GetEmployee(Guid companyId, Guid id)
         {
-            var company = _repository.Company.GetCompany(id, trackChanges: false);
+            var company = _repository.Company.GetCompany(companyId, trackChanges: false);
             if (company == null)
             {
-                _logger.LogInfo($"company {id} doesn't exist");
+                _logger.LogInfo($"company {companyId} doesn't exist");
                 return NotFound();
             }
             var employee = _repository.Employee.GetEmployee(companyId, id, trackChanges: false);
@@ -147,7 +153,13 @@ namespace CompanyEmployees.Controllers
                 return NotFound();
             }
             var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employeeEntity);
-            patchDoc.ApplyTo(employeeToPatch);
+            patchDoc.ApplyTo(employeeToPatch, ModelState);
+            TryValidateModel(employeeToPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
             _mapper.Map(employeeToPatch, employeeEntity);
             _repository.Save();
             return NoContent();
