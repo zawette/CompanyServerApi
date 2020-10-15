@@ -28,7 +28,7 @@ namespace CompanyEmployees
         {
             services.ConfigureCors();
             services.ConfigureSqlContext(Configuration);
-            services.AddControllers(config => config.ReturnHttpNotAcceptable = true).AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter();
+            services.AddControllers(config => config.ReturnHttpNotAcceptable = true).AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter().AddNewtonsoftJson();
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddAutoMapper(typeof(Startup));
