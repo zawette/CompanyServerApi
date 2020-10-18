@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using System.Threading.Tasks;
 
 namespace Repository
 {
@@ -18,9 +19,6 @@ namespace Repository
 
         public IEmployeeRepository Employee => _employeeRepo ?? new EmployeeRepository(_repositoryContext);
 
-        public void Save()
-        {
-            _repositoryContext.SaveChanges();
-        }
+        public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
     }
 }
