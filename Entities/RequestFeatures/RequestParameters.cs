@@ -2,6 +2,8 @@
 {
     public abstract class RequestParameters
     {
+        public string OrderBy { get; set; }
+
         private const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
         private int _pageSize = 10;
@@ -18,5 +20,4 @@
             }
         }
     }
-
 }
