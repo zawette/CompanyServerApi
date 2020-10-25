@@ -14,6 +14,8 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/companies")]
     [ApiController]
+    [ResponseCache(CacheProfileName = "120SecondsDuration")]
+
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -44,6 +46,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("{id}")]
+        [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company = await _repository.Company.GetCompanyAsync(id, trackChanges: false);
@@ -119,7 +122,6 @@ namespace CompanyEmployees.Controllers
         [HttpPut("{id}")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
-
         public async Task<IActionResult> UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
         {
             var companyEntity = HttpContext.Items["company"] as Company;

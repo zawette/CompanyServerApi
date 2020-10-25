@@ -31,11 +31,13 @@ namespace CompanyEmployees
         {
             services.ConfigureCors();
             services.ConfigureSqlContext(Configuration);
-            services.AddControllers(config => config.ReturnHttpNotAcceptable = true).AddXmlDataContractSerializerFormatters().AddCustomCSVFormatter().AddNewtonsoftJson();
-            //services.Configure<ApiBehaviorOptions>(options =>
-            //{
-            //    options.SuppressModelStateInvalidFilter = true;
-            //});
+            services.AddControllers(config => config.ReturnHttpNotAcceptable = true)
+                .AddXmlDataContractSerializerFormatters()
+                .AddCustomCSVFormatter()
+                .AddNewtonsoftJson()
+                .ConfigureCachingprofiles();
+
+            services.ConfigureResponseCaching();
             services.AddScoped<ILoggerManager, LoggerManager>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddAutoMapper(typeof(Startup));
@@ -58,7 +60,7 @@ namespace CompanyEmployees
             app.UseHttpsRedirection();
 
             app.UseCors("CorsPolicy");
-
+            app.UseResponseCaching();
             app.UseRouting();
 
             app.UseAuthorization();
